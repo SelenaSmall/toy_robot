@@ -10,4 +10,51 @@ describe Robot do
       expect(instance.position).to be_nil
     end
   end
+
+  describe '#place' do
+    it 'should return an instance of Position' do
+      instance = Robot.new
+      command = 'PLACE 1,2'
+
+      expect(instance.place(command)).to be_a Position
+    end
+
+    it 'should return nil if command is empty' do
+      instance = Robot.new
+      command = ''
+
+      expect(instance.place(command)).to be_nil
+    end
+
+    it 'should return nil if command does not match the place pattern' do
+      instance = Robot.new
+      command = 'get'
+
+      expect(instance.place(command)).to be_nil
+    end
+  end
+
+  describe '#update_robot' do
+    it 'should return an instance of Position' do
+      instance = Robot.new
+      new_position = Position.new(0, 1)
+
+      expect(instance.update_robot(new_position)).to be_a Position
+    end
+
+    it 'should return false if new_position is nil' do
+      instance = Robot.new
+      new_position = nil
+
+      expect(instance.update_robot(new_position)).to be_nil
+    end
+  end
+
+  describe '#not_in_place?' do
+    it 'should return true if position attribute is nil' do
+      instance = Robot.new
+
+      expect(instance.not_in_place?).to be true
+    end
+  end
 end
