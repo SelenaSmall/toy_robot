@@ -1,3 +1,6 @@
+require_relative 'direction'
+require_relative 'position'
+
 # HandleInput class
 class HandleInput
   attr_accessor :robot, :table
@@ -38,7 +41,14 @@ class HandleInput
 
     puts 'turn left' if left.match?(command)
 
-    puts 'turn right' if right.match?(command)
+    if right.match?(command)
+      # Turn right and update the robots direction
+      robot.position.f = Direction.new.turn_right(robot.position.f)
+
+      robot.update_robot(robot.position)
+
+      puts "New position #{robot.position.x},#{robot.position.y},#{robot.position.f}"
+    end
 
     puts 'reporting' if report.match?(command)
   end
