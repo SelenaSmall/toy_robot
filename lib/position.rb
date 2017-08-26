@@ -1,9 +1,10 @@
 # Position class
 class Position
-  attr_accessor :x, :y
+  attr_accessor :x, :y, :f  
 
-  def initialize(x, y)
+  def initialize(x, y, f)
     @x = x
     @y = y
+    @f = f    
   end
 end

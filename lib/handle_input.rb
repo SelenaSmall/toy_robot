@@ -11,24 +11,25 @@ class HandleInput
   def interpret(command)
     # Valid command patterns
     # TODO: Add direction to place command
-    place = /^PLACE\s+\d+\s*,\s*\d+\s*$/
+    place = /^PLACE\s+\d+\s*,\s*\d+\s*,\s*(WEST||NORTH||EAST||SOUTH)$/
     move = /^MOVE$/
     left = /^LEFT$/
     right = /^RIGHT$/
     report = /^REPORT$/
 
     if place.match?(command)
-      command, x, y = command.tr(',', ' ').split
+      command, x, y, f = command.tr(',', ' ').split
 
-      position = @robot.place(x.to_i, y.to_i)
+      position = @robot.place(x.to_i, y.to_i, f)
 
       # Only update robot if the position is valid on the table
       robot.update_robot(position) if @table.valid_position?(position.x, position.y)
 
-      puts "CMD: #{command} #{position.x},#{position.y}"
+      puts "CMD: #{command} #{position.x},#{position.y},#{position.f}"
 
-      return "#{command} #{position.x},#{position.y}" unless robot.not_in_place?
-          end
+      puts 'placed!' unless robot.not_in_place?
+      return "#{command} #{position.x},#{position.y},#{position.f}" unless robot.not_in_place?
+    end
 
     # PLACE is the only valid command unless robot is in place
     return if robot.not_in_place?

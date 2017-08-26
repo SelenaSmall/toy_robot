@@ -14,15 +14,15 @@ describe Robot do
   describe '#place' do
     it 'should return an instance of Position' do
       instance = Robot.new
-      command = 'PLACE 1,2'
-      expect(instance.place(0, 0)).to be_a Position
+
+      expect(instance.place(0, 0, 'NORTH')).to be_a Position
     end
   end
 
   describe '#update_robot' do
     it 'should return an instance of Position' do
       instance = Robot.new
-      new_position = Position.new(0, 1)
+      new_position = Position.new(0, 1, 'NORTH')
 
       expect(instance.update_robot(new_position)).to be_a Position
     end

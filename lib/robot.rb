@@ -9,8 +9,8 @@ class Robot
   end
 
   # Place the robot
-  def place(x, y)
-    Position.new(x, y)
+  def place(x, y, f)
+    Position.new(x, y, f)
   end
 
   # Update the robot's position
