@@ -20,6 +20,7 @@ class HandleInput
     right = /^RIGHT$/
     report = /^REPORT$/
 
+    # PLACE
     if place.match?(command)
       command, x, y, f = command.tr(',', ' ').split
 
@@ -37,10 +38,17 @@ class HandleInput
     # PLACE is the only valid command unless robot is in place
     return if robot.not_in_place?
 
-    puts 'moving' if move.match?(command)
+    # LEFT
+    if left.match?(command)
+      # Turn left and update the robots direction
+      robot.position.f = Direction.new.turn_left(robot.position.f)
 
-    puts 'turn left' if left.match?(command)
+      robot.update_robot(robot.position)
 
+      puts "New position #{robot.position.x},#{robot.position.y},#{robot.position.f}"
+    end
+
+    # RIGHT
     if right.match?(command)
       # Turn right and update the robots direction
       robot.position.f = Direction.new.turn_right(robot.position.f)
@@ -49,6 +57,8 @@ class HandleInput
 
       puts "New position #{robot.position.x},#{robot.position.y},#{robot.position.f}"
     end
+
+    puts 'moving' if move.match?(command)
 
     puts 'reporting' if report.match?(command)
   end
