@@ -62,17 +62,32 @@ class HandleInput
     if move.match?(command)
       case robot.position.f
       when 'NORTH'
-        robot.position.y += 1
-      when 'EAST'
-        robot.position.x += 1
-      when 'SOUTH'
-        robot.position.y -= 1
-      when 'WEST'
-        robot.position.x -= 1
-      end
+        y = robot.position.y
+        y += 1
+        position = Position.new(robot.position.x, y, robot.position.f)
 
-      robot.update_robot(robot.position)
-      puts "New position #{robot.position.x},#{robot.position.y},#{robot.position.f}"
+        robot.update_robot(position) if table.valid_position?(robot.position.x, position.y)
+      when 'EAST'
+        x = robot.position.x
+        x += 1
+
+        position = Position.new(x, robot.position.y, robot.position.f)
+
+        robot.update_robot(position) if table.valid_position?(position.x, robot.position.y)
+      when 'SOUTH'
+        y = robot.position.y
+        y -= 1
+        position = Position.new(robot.position.x, y, robot.position.f)
+
+        robot.update_robot(position) if table.valid_position?(robot.position.x, position.y)
+      when 'WEST'
+        x = robot.position.x
+        x -= 1
+
+        position = Position.new(x, robot.position.y, robot.position.f)
+
+        robot.update_robot(position) if table.valid_position?(position.x, robot.position.y)
+      end
     end
 
     # puts 'reporting' if report.match?(command)
