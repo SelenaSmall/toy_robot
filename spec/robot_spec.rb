@@ -15,22 +15,7 @@ describe Robot do
     it 'should return an instance of Position' do
       instance = Robot.new
       command = 'PLACE 1,2'
-
-      expect(instance.place(command)).to be_a Position
-    end
-
-    it 'should return nil if command is empty' do
-      instance = Robot.new
-      command = ''
-
-      expect(instance.place(command)).to be_nil
-    end
-
-    it 'should return nil if command does not match the place pattern' do
-      instance = Robot.new
-      command = 'get'
-
-      expect(instance.place(command)).to be_nil
+      expect(instance.place(0, 0)).to be_a Position
     end
   end
 
