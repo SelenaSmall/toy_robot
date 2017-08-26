@@ -75,6 +75,9 @@ class HandleInput
       puts "New position #{robot.position.x},#{robot.position.y},#{robot.position.f}"
     end
 
-    puts 'reporting' if report.match?(command)
+    # puts 'reporting' if report.match?(command)
+    if report.match?(command)
+      puts "Output: #{robot.position.x},#{robot.position.y},#{robot.position.f}"
+    end
   end
 end
