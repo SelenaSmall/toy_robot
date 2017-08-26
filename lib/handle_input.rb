@@ -58,7 +58,22 @@ class HandleInput
       puts "New position #{robot.position.x},#{robot.position.y},#{robot.position.f}"
     end
 
-    puts 'moving' if move.match?(command)
+    # MOVE
+    if move.match?(command)
+      case robot.position.f
+      when 'NORTH'
+        robot.position.y += 1
+      when 'EAST'
+        robot.position.x += 1
+      when 'SOUTH'
+        robot.position.y -= 1
+      when 'WEST'
+        robot.position.x -= 1
+      end
+
+      robot.update_robot(robot.position)
+      puts "New position #{robot.position.x},#{robot.position.y},#{robot.position.f}"
+    end
 
     puts 'reporting' if report.match?(command)
   end
