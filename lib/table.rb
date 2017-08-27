@@ -1,24 +1,14 @@
 # Table Class
 class Table
   attr_reader :x, :y
-  
+
   def initialize(x = 5, y = 5)
-    @x = x
-    @y = y
+    @x = (0..(x - 1))
+    @y = (0..(y - 1))
   end
 
   # Validate x & y axis are within 5x5 area
   def valid_position?(x, y)
-    valid_x?(x) && valid_y?(y)
-  end
-
-  private
-
-  def valid_x?(x)
-    x >= 0 && x <= @x - 1
-  end
-
-  def valid_y?(y)
-    y >= 0 && y <= @y - 1
+    @x.cover?(x) && @y.cover?(y)
   end
 end

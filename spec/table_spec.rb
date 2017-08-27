@@ -4,18 +4,18 @@ require './lib/table'
 
 describe Table do
   describe '#initialize' do
-    it 'should have an x attribute which is an integer' do
+    it 'should have an x attribute which is a Range' do
       instance = Table.new
 
-      expect(instance.x).to be_a Integer
-      expect(instance.x).to eq 5
+      expect(instance.x).to be_a Range
+      expect(instance.x).to eq 0..4
     end
 
-    it 'should have a y attribute which is an integer' do
+    it 'should have a y attribute which is a Range' do
       instance = Table.new
 
-      expect(instance.y).to be_a Integer
-      expect(instance.y).to eq 5
+      expect(instance.y).to be_a Range
+      expect(instance.y).to eq 0..4
     end
   end
 
@@ -60,58 +60,6 @@ describe Table do
       instance = Table.new
 
       expect(instance.valid_position?(0, -2)).to be false
-    end
-  end
-
-  describe '#valid_x?' do
-    it 'should return true when x is not greater than or equal to 0' do
-      instance = Table.new
-
-      expect(instance.send(:valid_x?, 0)).to be true
-    end
-
-    it 'should return true when x is less than or equal to 4' do
-      instance = Table.new
-
-      expect(instance.send(:valid_x?, 4)).to be true
-    end
-
-    it 'should return false when x is less 0' do
-      instance = Table.new
-
-      expect(instance.send(:valid_x?, -1)).to be false
-    end
-
-    it 'should return false when x greater than 4' do
-      instance = Table.new
-
-      expect(instance.send(:valid_x?, 6)).to be false
-    end
-  end
-
-  describe '#valid_y?' do
-    it 'should return true when y is not greater than or equal to 0' do
-      instance = Table.new
-
-      expect(instance.send(:valid_y?, 0)).to be true
-    end
-
-    it 'should return true when y is less than or equal to 4' do
-      instance = Table.new
-
-      expect(instance.send(:valid_y?, 4)).to be true
-    end
-
-    it 'should return false when y is less 0' do
-      instance = Table.new
-
-      expect(instance.send(:valid_y?, -1)).to be false
-    end
-
-    it 'should return false when y greater than 4' do
-      instance = Table.new
-
-      expect(instance.send(:valid_y?, 6)).to be false
     end
   end
 end
