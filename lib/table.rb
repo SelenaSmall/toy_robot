@@ -1,4 +1,4 @@
-# Table
+# Table class
 class Table
   attr_reader :x, :y
 
@@ -7,6 +7,9 @@ class Table
     @y = (0..(y - 1))
   end
 
+  # Valid Position method
+  # @params position [Object]
+  # @return Boolean
   def valid_position?(position)
     @x.cover?(position.x) && @y.cover?(position.y)
   end

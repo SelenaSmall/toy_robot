@@ -4,11 +4,13 @@ require_relative './lib/table'
 require_relative './lib/robot'
 require_relative './lib/handle_input'
 
-command = HandleInput.new(Robot.new, Table.new)
+robot = Robot.new
+command = HandleInput.new(robot, Table.new, Action.new(robot))
 
-# Keep reading user inputs while the program is running
+$stdout.print "Options: PLACE X,Y,F; MOVE; LEFT; RIGHT; REPORT; EXIT\n"
+
+# Reading user input
 loop do
-  puts 'Select your command'
   input = gets.chomp
 
   unless /^EXIT$/.match?(input)
