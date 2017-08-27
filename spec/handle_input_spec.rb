@@ -18,12 +18,11 @@ describe HandleInput do
   end
 
   describe '#interpret' do
-    it 'should return a string if command matches place pattern' do
+    it 'should return an instance of Position command matches place pattern' do
       instance = HandleInput.new(Robot.new, Table.new)
-      command = 'PLACE 1,2,NORTH'      
+      command = 'PLACE 1,2,NORTH'
 
-      expect(instance.interpret(command)).to be_a String
-      expect(instance.interpret(command)).to match(/^PLACE\s+\d+\s*,\s*\d+\s*,\s*(WEST||NORTH||EAST||SOUTH)$/)      
+      expect(instance.interpret(command)).to be_a Position
     end
 
     it 'should return nil if command does not match a valid pattern' do

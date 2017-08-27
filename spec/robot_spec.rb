@@ -11,14 +11,6 @@ describe Robot do
     end
   end
 
-  describe '#place' do
-    it 'should return an instance of Position' do
-      instance = Robot.new
-
-      expect(instance.place(0, 0, 'NORTH')).to be_a Position
-    end
-  end
-
   describe '#update_robot' do
     it 'should return an instance of Position' do
       instance = Robot.new
