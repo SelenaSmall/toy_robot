@@ -1,9 +1,4 @@
-require_relative './actions/place'
-require_relative './actions/move'
-require_relative './actions/turn'
-require_relative './actions/report'
-
-# HandleInput class
+# HandleInput
 class HandleInput
   attr_accessor :robot, :table
 
@@ -21,18 +16,25 @@ class HandleInput
 
   # Interpret user Command
   def interpret(command)
-    return Place.new(robot, table).perform(command) if PLACE.match?(command)
+    return exec(robot.place(command)) if PLACE.match?(command)
 
     return if robot.not_in_place?
 
-    return Move.new(robot, table).perform if MOVE.match?(command)
+    return exec(robot.move(robot.position)) if MOVE.match?(command)
 
-    return Turn.new(robot).left if LEFT.match?(command)
+    return exec(robot.left(robot.position)) if LEFT.match?(command)
 
-    return Turn.new(robot).right if RIGHT.match?(command)
+    return exec(robot.right(robot.position)) if RIGHT.match?(command)
 
-    return Report.new(robot).perform if REPORT.match?(command)
+    return robot.report(robot.position) if REPORT.match?(command)
 
     # TODO: Exception handler
+  end
+
+  # Update robot position if it's valid
+  def exec(position)
+    return unless table.valid_position?(position)
+
+    robot.update_robot(position)
   end
 end

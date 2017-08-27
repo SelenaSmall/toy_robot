@@ -1,4 +1,4 @@
-# Position class
+# Position
 class Position
   attr_accessor :x, :y, :f
 

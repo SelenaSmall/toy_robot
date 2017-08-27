@@ -4,8 +4,7 @@ require_relative './lib/table'
 require_relative './lib/robot'
 require_relative './lib/handle_input'
 
-table = Table.new
-robot = Robot.new
+command = HandleInput.new(Robot.new, Table.new)
 
 # Keep reading user inputs while the program is running
 loop do
@@ -13,12 +12,10 @@ loop do
   input = gets.chomp
 
   unless /^EXIT$/.match?(input)
-    command = HandleInput.new(robot, table)
-
     command.interpret(input)
     next
   end
 
-  puts 'Goodbye!'
+  $stdout.print "Goodbye! \n"
   break
 end

@@ -22,44 +22,51 @@ describe Table do
   describe '#valid_position?' do
     it 'should return true when x and y attributes are valid' do
       instance = Table.new
+      position = Position.new(0, 0, 'NORTH')
 
-      expect(instance.valid_position?(0, 1)).to be true
+      expect(instance.valid_position?(position)).to be true
     end
 
     it 'should return false when x and y attributes are too big' do
       instance = Table.new
+      position = Position.new(6, 6, 'NORTH')
 
-      expect(instance.valid_position?(6, 6)).to be false
+      expect(instance.valid_position?(position)).to be false
     end
 
     it 'should return false when x attribute is too big' do
       instance = Table.new
+      position = Position.new(6, 0, 'NORTH')
 
-      expect(instance.valid_position?(6, 0)).to be false
+      expect(instance.valid_position?(position)).to be false
     end
 
     it 'should return false when y attribute is too big' do
       instance = Table.new
+      position = Position.new(0, 6, 'NORTH')
 
-      expect(instance.valid_position?(0, 6)).to be false
+      expect(instance.valid_position?(position)).to be false
     end
 
     it 'should return false when x and y attributes are negative' do
       instance = Table.new
+      position = Position.new(-1, -1, 'NORTH')
 
-      expect(instance.valid_position?(-1, -1)).to be false
+      expect(instance.valid_position?(position)).to be false
     end
 
     it 'should return false when x attribute is negative' do
       instance = Table.new
+      position = Position.new(-2, 0, 'NORTH')
 
-      expect(instance.valid_position?(-2, 0)).to be false
+      expect(instance.valid_position?(position)).to be false
     end
 
     it 'should return false when y attribute is negative' do
       instance = Table.new
+      position = Position.new(0, -2, 'NORTH')
 
-      expect(instance.valid_position?(0, -2)).to be false
+      expect(instance.valid_position?(position)).to be false
     end
   end
 end
