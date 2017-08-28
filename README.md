@@ -4,12 +4,12 @@ Toy robot simulator written in Ruby
 ***
 
 ## Installation
-Environment: Built on Mac OSx using Ruby -v 2.4.1
+Environment: Built on Mac OSX 10.11.6 using Ruby -v 2.4.1
 
 Make sure you have the correct version of ruby installed 
 https://www.ruby-lang.org/en/documentation/installation/
 	
-Clone this Repo 
+Clone this Repo
 > $ git clone https://github.com/selenasmall/toy_robot.git 
 
 In root of the app run bundle install

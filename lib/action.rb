@@ -53,9 +53,10 @@ class Action
 
   OPTIONS = %w[WEST NORTH EAST SOUTH].freeze
 
-  # Prev Option method
+  # Prev option method
   # Find previous value in the options array
   # @param direction [String]
+  # @param options [Array]
   # @return previous direction
   def prev_option(direction)
     return unless OPTIONS.include?(direction)
@@ -68,9 +69,10 @@ class Action
     OPTIONS.fetch(i)
   end
 
-  # Next Option method
+  # Next option method
   # Find next value in the options array
   # @param direction [String]
+  # @param options [Array]
   # @return next direction
   def next_option(direction)
     return unless OPTIONS.include?(direction)
