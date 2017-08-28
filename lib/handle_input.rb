@@ -6,10 +6,7 @@ class HandleInput
 
   # Command Options
   PLACE   = /^PLACE\s+\d+\s*,\s*\d+\s*,\s*(WEST||NORTH||EAST||SOUTH)$/
-  MOVE    = /^MOVE$/
-  LEFT    = /^LEFT$/
-  RIGHT   = /^RIGHT$/
-  REPORT  = /^REPORT$/
+  ACTIONS = %w[MOVE LEFT RIGHT REPORT].freeze
 
   def initialize(robot, table, action)
     @robot = robot
@@ -21,17 +18,23 @@ class HandleInput
   # @param command [String]
   # @return Position
   def interpret(command)
-    return exec(action.place(command)) if PLACE.match?(command)
+    return unless command.match(PLACE) || ACTIONS.include?(command)
 
+    return exec(action.place(command)) if command.match?(PLACE)
     return if robot.not_in_place?
 
-    return exec(action.move(robot.position)) if MOVE.match?(command)
+    exec(next_position(robot.position, command))
+  end
 
-    return exec(action.left(robot.position)) if LEFT.match?(command)
+  private
 
-    return exec(action.right(robot.position)) if RIGHT.match?(command)
-
-    return action.report(robot.position) if REPORT.match?(command)
+  # Next position method
+  # Find the robot's next position if an action was to be performed
+  # @param position [Object]
+  # @param command [String]
+  # @return Position
+  def next_position(position, command)
+    action.public_send ACTIONS.detect { |e| e == command }.downcase, position
   end
 
   # Exec method

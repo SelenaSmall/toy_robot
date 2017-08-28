@@ -1,11 +1,5 @@
 # Action class
 class Action
-  attr_reader :robot
-
-  def initialize(robot)
-    @robot = robot
-  end
-
   # Place method
   # @param command [String]
   # @return Position
@@ -51,6 +45,8 @@ class Action
   def report(position)
     message = "Output: #{position.x},#{position.y},#{position.f} \n"
     $stdout.print message
+
+    position
   end
 
   private
