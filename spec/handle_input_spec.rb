@@ -4,16 +4,22 @@ require './lib/handle_input'
 
 describe HandleInput do
   describe '#initialize' do
-    it 'should have a table attribute which is nil' do
-      instance = HandleInput.new(@robot, @table, @action)
+    it 'should have a robot attribute which is an instance of Robot' do
+      instance = HandleInput.new(Robot.new, Table.new, Action.new)
 
-      expect(instance.table).to be_nil
+      expect(instance.robot).to be_a Robot
     end
 
-    it 'should have a action attribute which is nil' do
-      instance = HandleInput.new(@robot, @table, @action)
+    it 'should have a table attribute which is an instance of Table' do
+      instance = HandleInput.new(Robot.new, Table.new, Action.new)
 
-      expect(instance.action).to be_nil
+      expect(instance.table).to be_a Table
+    end
+
+    it 'should have an action attribute which is an instance of Action' do
+      instance = HandleInput.new(Robot.new, Table.new, Action.new)
+
+      expect(instance.action).to be_a Action
     end
   end
 
@@ -84,7 +90,7 @@ describe HandleInput do
   end
 
   describe '#exec' do
-    it 'should return an instance of Position if position is a valid table position' do
+    it 'should return an instance of Position' do
       instance = HandleInput.new(Robot.new, Table.new, Action.new)
       position = Position.new(0, 0, 'NORTH')
 

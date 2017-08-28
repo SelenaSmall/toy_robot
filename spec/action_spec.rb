@@ -49,11 +49,32 @@ describe Action do
   end
 
   describe '#prev_option' do
+    it 'should return the last value in the OPTIONS array' do
+      instance = Action.new
+
+      expect(instance.send(:prev_option, 'WEST')).to be_a String
+      expect(instance.send(:prev_option, 'WEST')).to eq 'SOUTH'
+    end
+
     it 'should return the previous value in the OPTIONS array' do
       instance = Action.new
 
       expect(instance.send(:prev_option, 'NORTH')).to be_a String
       expect(instance.send(:prev_option, 'NORTH')).to eq 'WEST'
+    end
+
+    it 'should return the previous value in the OPTIONS array' do
+      instance = Action.new
+
+      expect(instance.send(:prev_option, 'EAST')).to be_a String
+      expect(instance.send(:prev_option, 'EAST')).to eq 'NORTH'
+    end
+
+    it 'should return the previous value in the OPTIONS array' do
+      instance = Action.new
+
+      expect(instance.send(:prev_option, 'SOUTH')).to be_a String
+      expect(instance.send(:prev_option, 'SOUTH')).to eq 'EAST'
     end
 
     it 'should return nil if the direction param is empty' do
@@ -67,8 +88,29 @@ describe Action do
     it 'should return the next value in the OPTIONS array' do
       instance = Action.new
 
+      expect(instance.send(:next_option, 'WEST')).to be_a String
+      expect(instance.send(:next_option, 'WEST')).to eq 'NORTH'
+    end
+
+    it 'should return the next value in the OPTIONS array' do
+      instance = Action.new
+
       expect(instance.send(:next_option, 'NORTH')).to be_a String
       expect(instance.send(:next_option, 'NORTH')).to eq 'EAST'
+    end
+
+    it 'should return the next value in the OPTIONS array' do
+      instance = Action.new
+
+      expect(instance.send(:next_option, 'EAST')).to be_a String
+      expect(instance.send(:next_option, 'EAST')).to eq 'SOUTH'
+    end
+
+    it 'should return the first value in the OPTIONS array' do
+      instance = Action.new
+
+      expect(instance.send(:next_option, 'SOUTH')).to be_a String
+      expect(instance.send(:next_option, 'SOUTH')).to eq 'WEST'
     end
 
     it 'should return nil if the direction param is empty' do

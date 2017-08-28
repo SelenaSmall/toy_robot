@@ -40,13 +40,13 @@ Test by running rspec http://rspec.info/
 > $ bundle exec rspec
 	
 Expected terminal output:
-> ... ... ... ... ... .Output: 1,2,NORTH
+> ... ... ... ... ... ... ... ..Output: 1,2,NORTH
 >
-> ... ... ... ... ... ... .
+> ... ... ... ... ... ... ..
 >
-> Finished in 0.01938 seconds (files took 0.23698 seconds to load)
+> Finished in 0.02025 seconds (files took 0.2322 seconds to load)
 >
-> 35 examples, 0 failures
+> 43 examples, 0 failures
 
 ***
 

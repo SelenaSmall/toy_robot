@@ -19,5 +19,12 @@ describe Position do
       expect(instance.y).to be >= 0
       expect(instance.y).to be <= 4
     end
+
+    it 'should have a f attribute which is a string' do
+      instance = Position.new(0, 0, 'NORTH')
+
+      expect(instance.f).to be_a String
+      expect(instance.f).to eq 'NORTH'
+    end
   end
 end
