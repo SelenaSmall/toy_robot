@@ -1,0 +1,115 @@
+USER TEST DATA
+----------------------------------------------------------------------------------------
+
+The sample data provided in this file was by testing against the following UAT criteria.
+
+----------------------------------------------------------------------------------------
+
+__PLACE__
+1. Robot can only be placed inside the 5x5 square table top. Invalid PLACE actions are
+completely ignored.
+
+  > PLACE 6,0,NORTH
+  > REPORT
+  > PLACE 4,4,NORTH
+  > REPORT
+  > Output: 4,4,NORTH 
+  > PLACE 6,6,SOUTH
+  > REPORT
+  > Output: 4,4,NORTH
+  >
+
+
+2. After a successful PLACE action, a second PLACE action can occur too.
+
+  > PLACE 0,0,NORTH
+  > REPORT
+  > Output: 0,0,NORTH
+  > PLACE 3,2,WEST
+  > REPORT
+  > Output: 3,2,WEST
+  >
+
+
+3. Other valid commands are ignored until the robot has been placed on the table top
+
+  > MOVE
+  > LEFT
+  > RIGHT
+  > REPORT
+  > PLACE 0,0,NORTH
+  > REPORT
+  > Output: 0,0,NORTH
+  >
+
+
+__MOVE__
+4. Robot moves forward in the direction it's facing by 1 space
+
+  > PLACE 0,0,NORTH
+  > REPORT
+  > Output: 0,0,NORTH
+  > MOVE
+  > REPORT
+  > Output: 0,1,NORTH
+  >
+
+
+5. Robot cannot move forward passed the boundaries of the table top
+
+  > PLACE 4,4,NORTH
+  > MOVE
+  > REPORT
+  > Output: 4,4,NORTH
+  > MOVE
+  > REPORT
+  > Output: 4,4,NORTH
+  >
+
+
+__LEFT__
+6. Robot turns 90 degrees to the left
+
+  > PLACE 4,4,NORTH
+  > LEFT
+  > REPORT
+  > Output: 4,4,WEST
+  >
+
+
+__RIGHT__
+7. Robot turns 90 degrees to the right
+
+  > PLACE 4,4,NORTH
+  > RIGHT
+  > REPORT
+  > Output: 4,4,EAST
+  >
+
+
+__REPORT__
+8. Robot's current position is output to the terminal
+
+  > PLACE 4,4,NORTH
+  > REPORT
+  > Output: 4,4,EAST
+  >
+
+
+__EXIT__
+9. Gracefully exit the program
+
+  > EXIT
+  > Goodbye!
+
+
+__INVALID COMMANDS__
+10. Invalid command options are ignored, including special characters
+
+  > HELLO
+  > 54
+  > {}
+  > 
+  > ;
+  >
+
