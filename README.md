@@ -1,4 +1,8 @@
 # Toy Robot
+[![Build Status](https://travis-ci.org/SelenaSmall/toy_robot.png)](https://travis-ci.org/SelenaSmall/toy_robot)
+[![Code Climate](https://codeclimate.com/github/SelenaSmall/toy_robot/badges/gpa.svg)](https://codeclimate.com/github/SelenaSmall/toy_robot)
+[![Test Coverage](https://codeclimate.com/github/SelenaSmall/toy_robot/coverage.svg)](https://codeclimate.com/github/SelenaSmall/toy_robot/coverage)
+
 Toy robot simulator written in Ruby
 
 ***
