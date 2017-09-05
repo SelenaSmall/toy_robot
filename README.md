@@ -23,7 +23,7 @@ In root of the app run bundle install
 
 ## Usage
 Run the program from the app root
-> $ toy_robot.rb
+> $ ruby toy_robot.rb
 
 Expected terminal output:
 > Options: PLACE X,Y,F; MOVE; LEFT; RIGHT; REPORT; EXIT
@@ -41,8 +41,8 @@ EXIT | Gracefully exit the program.
 
 ## Testing
 Test by running rspec http://rspec.info/ 
-> $ bundle exec rspec
-	
+> $ rake rspec
+
 Expected terminal output:
 > ... ... ... ... ... ... ... ..Output: 1,2,NORTH
 >
